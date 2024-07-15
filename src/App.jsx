@@ -1,4 +1,5 @@
-import Expenses from "./components/espenses/Expenses";
+import Expenses from "./components/Espenses/Expenses";
+import NewExpenses from "./components/NewExpenses/NewExpenses";
 import './App.css';
 
 function App() {
@@ -29,10 +30,9 @@ function App() {
   document.getElementById('root').append(par);
   return (
     <div className="App-header">
-      {/* <header className='App-header'> */}
       <h1>Let get started!</h1>
+      <NewExpenses />
       <Expenses items={expenses} />
-      {/* </header> */}
     </div>
   );
 }
