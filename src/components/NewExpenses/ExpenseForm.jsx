@@ -3,28 +3,77 @@ import './ExpenseForm.css';
 
 function ExpenseForm(props) {
     const [title, setTitle] = useState('');
-    function titleChangeHandler(event) {
-        setTitle(event.target.value);
-    };
-    function amountChangeHandler(params) {
+    const [amount, setAmount] = useState('');
+    const [date, setDate] = useState('');
 
+    // const [input, setInput] = useState({
+    //      title: '',
+    //      amount: '',
+    //      date: ''
+    // })
+    function titleChangeHandler(e) {
+        setTitle(e.target.value);
+        // setInput((prev) => {
+        // return { ...prev, title: e.target.value }
+        // })
     };
-    function dateChangeHandler() { }
+    function amountChangeHandler(e) {
+        setAmount(e.target.value);
+        // setInput((prev) => {
+        // return { ...prev, amount: e.target.value }
+        // })
+    };
+    function dateChangeHandler(e) {
+        setDate(e.target.value);
+        // setInput(prev => {
+        // return { ...prev, date: e.target.value }
+        // })
+    }
+
+    // Shared handler function
+    function inputChangeHandler(input, val) {
+        if (input === 'title') {
+            setTitle(val);
+        } else if (input === 'amount') {
+            setAmount(val)
+        } else {
+            setDate(val);
+        }
+    }
+
+    /**
+     * @param {React.FormEvent} e - description
+     */
+    function submitHandler(e) {
+        e.preventDefault();
+    }
 
     return (
-        <form>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+
+            const expenseData = {
+                title: title,
+                amount: amount,
+                date: new Date(date)
+            }
+            console.log(expenseData);
+            setTitle('');
+            setAmount('');
+            setDate('');
+        }}>
             <div className='new-expense__controls'>
                 <div className='new-expense__controls'>
                     <label htmlFor='title'>Title</label>
-                    <input type='text' id='title' onChange={titleChangeHandler} />
+                    <input type='text' id='title' value={title} onChange={e => inputChangeHandler('title', e.target.value)} />
                 </div>
                 <div className='new-expense__controls'>
                     <label htmlFor='amount'>Amount</label>
-                    <input type='number' id='amount' min='0.01' step='0.01' onChange={amountChangeHandler} />
+                    <input type='number' id='amount' min='0.01' step='0.01' value={amount} onChange={amountChangeHandler} />
                 </div>
                 <div className='new-expense__controls'>
                     <label htmlFor='date'>Date</label>
-                    <input type='date' id='date' min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler} />
+                    <input type='date' id='date' min='2019-01-01' max='2022-12-31' value={date} onChange={dateChangeHandler} />
                 </div>
                 <div className="new-expense__actions">
                     <button type="submit">Add expense</button>
