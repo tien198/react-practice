@@ -41,27 +41,22 @@ function ExpenseForm(props) {
         }
     }
 
-    /**
-     * @param {React.FormEvent} e - description
-     */
     function submitHandler(e) {
         e.preventDefault();
+
+        const expenseData = {
+            title: title,
+            amount: amount,
+            date: new Date(date)
+        }
+        console.log(expenseData);
+        setTitle('');
+        setAmount('');
+        setDate('');
     }
 
     return (
-        <form onSubmit={(e) => {
-            e.preventDefault();
-
-            const expenseData = {
-                title: title,
-                amount: amount,
-                date: new Date(date)
-            }
-            console.log(expenseData);
-            setTitle('');
-            setAmount('');
-            setDate('');
-        }}>
+        <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
                 <div className='new-expense__controls'>
                     <label htmlFor='title'>Title</label>
