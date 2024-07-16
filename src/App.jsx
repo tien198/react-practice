@@ -28,10 +28,20 @@ function App() {
   ];
 
   document.getElementById('root').append(par);
+
+  function addExpense(expense) {
+    const expenseNew = {
+      id: Math.random().toString(),
+      ...expense
+    }
+    expenses.push(expenseNew);
+    console.log(expenses);
+  }
+
   return (
     <div className="App-header">
       <h1>Let get started!</h1>
-      <NewExpenses />
+      <NewExpenses saveExpenseHander={addExpense} />
       <Expenses items={expenses} />
     </div>
   );
