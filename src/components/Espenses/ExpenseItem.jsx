@@ -11,15 +11,17 @@ function ExpenseItem({ exp }) {
   // console.log(title);
   // };
   return (
-    <Card className="expense-item">
-      {/* <div>{exp.date.toISOString()}</div> */}
-      <ExpenseDate date={exp.date} />
-      <div className="expense-item__description">
-        <h2>{exp.title}</h2>
-        <div className="expense-item__price">${exp.amount}</div>
-      </div>
-      {/* <button onClick={clickedHandler}>Change Title</button> */}
-    </Card>
+    <li>
+      <Card className="expense-item">
+        {/* <div>{exp.date.toISOString()}</div> */}
+        <ExpenseDate date={exp.date} />
+        <div className="expense-item__description">
+          <h2>{exp.title}</h2>
+          <div className="expense-item__price">${exp.amount}</div>
+        </div>
+        {/* <button onClick={clickedHandler}>Change Title</button> */}
+      </Card>
+    </li>
   );
 }
 
