@@ -3,6 +3,7 @@ import Card from '../UI/Card'
 import ExpenseFilter from "./ExpenseFilter";
 import ExpenseList from './ExpenseList';
 import './Expenses.css';
+import ExpenseCharBar from './ExpenseCharBar';
 
 const par = {
     items: [{
@@ -22,13 +23,17 @@ function Expenses({ items }) {
     // displayItems.push(<ExpenseItem exp={e} />)
     // });
     // console.log(items);
+    const filterVals = items.filter(e => e.date.getFullYear() === Number(filter));
+
+
 
 
     return (
         <div>
             <ExpenseFilter filter={filter} onFilterChange={filterChange} />
+            <ExpenseCharBar expenses={filterVals} />
             <Card className='expenses'>
-                <ExpenseList items={items} filterProp={filter} />
+                <ExpenseList filterVals={filterVals} />
             </Card>
         </div>
     );

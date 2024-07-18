@@ -3,7 +3,7 @@ import './ChartBar.css';
 
 function ChartBar({ label, value, maxValue }) {
     let barHeight = '0%';
-    if (value > 0) {
+    if (maxValue > 0) {
         barHeight = Math.round((value / maxValue) * 100) + '%';
     }
     return (

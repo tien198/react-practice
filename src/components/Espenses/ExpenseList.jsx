@@ -2,9 +2,7 @@ import React from 'react';
 import ExpenseItem from './ExpenseItem';
 import './ExpenseList.css';
 
-function ExpenseList({ items, filterProp }) {
-    const filterVals = items.filter(e => e.date.getFullYear() === Number(filterProp));
-
+function ExpenseList({ filterVals }) {
     if (filterVals.length === 0)
         return <h2 className='expenses-list__fallback'>No expense found</h2>
 

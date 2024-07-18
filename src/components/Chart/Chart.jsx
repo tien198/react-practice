@@ -3,11 +3,14 @@ import ChartBar from './ChartBar';
 import './Chart.css';
 
 function Chart({ dataPoints }) {
+    const valueArr = dataPoints.map(e => e.value);
+    const maxVal = Math.max(...valueArr);
+
     return (
         <div className='chart'>
-            {dataPoints.map(d => {
-                <ChartBar key={dataPoints.label} value={dataPoints.value} maxValue={null} label={dataPoints.label} />
-            })}
+            {dataPoints.map(d =>
+                <ChartBar key={d.label} value={d.value} maxValue={maxVal} label={d.label} />
+            )}
         </div>
     );
 }

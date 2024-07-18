@@ -45,7 +45,7 @@ function App() {
   }
 
   return (
-    <div className="App-header">
+    <div>
       <h1>Let get started!</h1>
       <NewExpenses saveExpenseHander={addExpense} />
       <Expenses items={expenses} />
