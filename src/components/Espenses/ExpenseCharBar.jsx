@@ -8,6 +8,7 @@ function ExpenseCharBar({ expenses }) {
         { label: 'Mar', value: 0 },
         { label: 'Apr', value: 0 },
         { label: 'May', value: 0 },
+        { label: 'June', value: 0 },
         { label: 'Jul', value: 0 },
         { label: 'Aug', value: 0 },
         { label: 'Sep', value: 0 },
@@ -17,7 +18,7 @@ function ExpenseCharBar({ expenses }) {
     ];
     for (const expense of expenses) {
         const month = expense.date.getMonth();
-        chartDataPoints[month - 1].value += expense.amount;
+        chartDataPoints[month].value += expense.amount;
     }
 
     return (
