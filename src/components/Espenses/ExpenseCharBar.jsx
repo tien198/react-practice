@@ -17,7 +17,7 @@ function ExpenseCharBar({ expenses }) {
     ];
     for (const expense of expenses) {
         const month = expense.date.getMonth();
-        chartDataPoints[month].value += expense.amount;
+        chartDataPoints[month - 1].value += expense.amount;
     }
 
     return (

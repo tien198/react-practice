@@ -25,14 +25,11 @@ function Expenses({ items }) {
     // console.log(items);
     const filterVals = items.filter(e => e.date.getFullYear() === Number(filter));
 
-
-
-
     return (
         <div>
-            <ExpenseFilter filter={filter} onFilterChange={filterChange} />
-            <ExpenseCharBar expenses={filterVals} />
             <Card className='expenses'>
+                <ExpenseFilter filter={filter} onFilterChange={filterChange} />
+                <ExpenseCharBar expenses={filterVals} />
                 <ExpenseList filterVals={filterVals} />
             </Card>
         </div>
